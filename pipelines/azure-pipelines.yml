@@ -6,14 +6,21 @@
 trigger:
 - main
 
+
+variables:
+  - name: subscription
+    value: 'e66e44f5-c9bb-4501-9a65-6214bc0fd534' 
+  - name: resourceGroupName
+    value: my-personal-website 
+    
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: echo first time!
+  displayName: 'Startingt'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: AzureResourceGroupDeployment@2
+  inputs:
+    azureSubscription: $(subscription)
+    resourceGroupName: $(resourceGroupName)
