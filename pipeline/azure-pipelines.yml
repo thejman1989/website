@@ -4,8 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
-
+- master
 
 variables:
   - name: subscription
@@ -24,4 +23,3 @@ steps:
   inputs:
     azureSubscription: $(subscription)
     resourceGroupName: $(resourceGroupName)
-    
