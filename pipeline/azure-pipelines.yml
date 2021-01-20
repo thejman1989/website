@@ -52,7 +52,6 @@ stages:
           location: $(location)
           templateLocation: 'Linked artifact'
           csmFile: '$(Build.ArtifactStagingDirectory)/website-resources.json'
-          csmParametersFile: '$(Build.ArtifactStagingDirectory)/azuredeploy.parameters.json'
           overrideParameters: '-name $(websiteName) -location $(location)'
           deploymentMode: 'Incremental'
 
