@@ -8,7 +8,7 @@ trigger:
 
 variables:
   - name: subscription
-    value: 'e66e44f5-c9bb-4501-9a65-6214bc0fd534' 
+    value: 'Visual Studio Enterprise' 
   - name: resourceGroupName
     value: my-personal-website 
     
