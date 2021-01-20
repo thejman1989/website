@@ -15,20 +15,30 @@ variables:
 pool:
   vmImage: 'ubuntu-latest'
 
-jobs:
-  - job : build 
-    steps:
+stages:
+- stage: Build
+  displayName: Build stage
 
-    - script: echo first time!
-      displayName: 'Starting'
+  jobs:
+    - job : build 
+      steps:
+      - task: CopyFiles@2
+        inputs:
+          contents: 'src/**'
+          targetFolder: $(Build.ArtifactStagingDirectory)
 
-    - task: PublishBuildArtifacts@1
-      displayName: Publish build artifact
-      inputs:
-        artifactName: drop
+      - task: PublishBuildArtifacts@1
+        displayName: Publish build artifact
+        inputs:
+          artifactName: drop
 
-    - task: AzureResourceGroupDeployment@2
-      inputs:
-        azureSubscription: $(subscription)
-        resourceGroupName: $(resourceGroupName)
-        location: 'West Europe'
+    
+    - job : Deploy 
+      steps:
+      - task: DownloadBuildArtifacts@0
+                 
+      - task: AzureResourceGroupDeployment@2
+        inputs:
+          azureSubscription: $(subscription)
+          resourceGroupName: $(resourceGroupName)
+          location: 'West Europe'
