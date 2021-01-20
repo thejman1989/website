@@ -15,12 +15,20 @@ variables:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo first time!
-  displayName: 'Startingt'
+jobs:
+  - job : build 
+    steps:
 
-- task: AzureResourceGroupDeployment@2
-  inputs:
-    azureSubscription: $(subscription)
-    resourceGroupName: $(resourceGroupName)
-    location: 'West Europe'
+    - script: echo first time!
+      displayName: 'Starting'
+
+    - task: PublishBuildArtifacts@1
+      displayName: Publish build artifact
+      inputs:
+        artifactName: drop
+
+    - task: AzureResourceGroupDeployment@2
+      inputs:
+        azureSubscription: $(subscription)
+        resourceGroupName: $(resourceGroupName)
+        location: 'West Europe'
