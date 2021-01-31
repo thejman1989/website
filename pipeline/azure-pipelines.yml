@@ -51,6 +51,12 @@ stages:
         inputs:
           artifactName: 'drop'
                  
+      - script: |
+          echo $(websiteName) 
+          echo $(location)
+          echo $(sku)
+          echo $(skuCode)
+
       - task: AzureResourceManagerTemplateDeployment@3
         inputs:
           deploymentScope: 'Resource Group'
