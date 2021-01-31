@@ -60,7 +60,7 @@ stages:
           resourceGroupName: '$(websiteName)-rg'
           location: $(location)
           templateLocation: 'Linked artifact'
-          csmFile: '$(Build.ArtifactStagingDirectory)drop/pipeline/website-resources.json'
+          csmFile: '$(Build.ArtifactStagingDirectory)/drop/pipeline/website-resources.json'
           overrideParameters: '
             -webAppName $(websiteName) 
             -location $(location)
