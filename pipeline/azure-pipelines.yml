@@ -35,8 +35,8 @@ stages:
       - task: CopyFiles@2
         inputs:
           contents: | 
-            'src/**'
-            'pipeline/**'
+            src/**
+            pipeline/**
           targetFolder: $(Build.ArtifactStagingDirectory)
 
       - task: PublishBuildArtifacts@1
