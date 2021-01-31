@@ -30,7 +30,9 @@ stages:
       steps:
       - task: CopyFiles@2
         inputs:
-          contents: 'src/**'
+          contents: | 
+            'src/**'
+            'pipeline/**'
           targetFolder: $(Build.ArtifactStagingDirectory)
 
       - task: PublishBuildArtifacts@1
@@ -54,9 +56,3 @@ stages:
           csmFile: '$(Build.ArtifactStagingDirectory)/pipeline/website-resources.json'
           overrideParameters: '-name $(websiteName) -location $(location)'
           deploymentMode: 'Incremental'
-
-      - task: AzureResourceGroupDeployment@2
-        inputs:
-          azureSubscription: $(subscription)
-          resourceGroupName: $(resourceGroupName)
-          location: 'West Europe'
