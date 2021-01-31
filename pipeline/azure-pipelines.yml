@@ -60,7 +60,7 @@ stages:
           templateLocation: 'Linked artifact'
           csmFile: '$(Build.ArtifactStagingDirectory)/pipeline/website-resources.json'
           overrideParameters: '
-            -name $(websiteName) 
+            -webAppName $(websiteName) 
             -location $(location)
             -sku $(sku)
             -skuCode $(skuCode)'
