@@ -17,6 +17,10 @@ variables:
     value: 'West Europe'
   - name: azureResourceManagerConnection
     value: 'Visual Studio Enterprise'
+  - name: sku
+    value: 'Basic'
+  - name: skuCode
+    value: 'B1'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -54,5 +58,9 @@ stages:
           location: $(location)
           templateLocation: 'Linked artifact'
           csmFile: '$(Build.ArtifactStagingDirectory)/pipeline/website-resources.json'
-          overrideParameters: '-name $(websiteName) -location $(location)'
+          overrideParameters: '
+            -name $(websiteName) 
+            -location $(location)
+            -sku $(sku)
+            -skuCode $(skuCode)'
           deploymentMode: 'Incremental'
