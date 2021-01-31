@@ -47,7 +47,9 @@ stages:
     - job : Deploy 
       dependsOn: Build
       steps:
-      #- task: DownloadBuildArtifacts@0
+      - task: DownloadBuildArtifacts@0
+        inputs:
+          artifactName: 'drop'
                  
       - task: AzureResourceManagerTemplateDeployment@3
         inputs:
